@@ -1,0 +1,49 @@
+﻿<Window x:Class="WpfHello.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfHello"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Users" Grid.Row="0">
+            <Grid x:Name="UserGrid">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Grid.Row="0">Name:</TextBlock>
+                <TextBox x:Name="txtName" Grid.Row="0" Grid.Column="1"/>
+
+                <TextBox Grid.Row="1" Grid.Column="1"/>
+
+                <TextBox Grid.Row="2" Grid.Column="1"/>
+
+                <Button Grid.Row="3" Grid.Column="2" x:Name="helloBtn" Click="helloBtn_Click" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right">
+                    Hello!
+                </Button>
+            </Grid>
+        </GroupBox>
+        <StackPanel Grid.Row="1">
+            <Label>N:</Label>
+            <TextBox x:Name="numberInput"/>
+            <Button x:Name="factorielBtn" Width="25" HorizontalAlignment="Left" Click="Factoriel_Click">
+                N!
+            </Button>
+            <Label>Result:</Label>
+            <TextBlock x:Name="result"/>
+        </StackPanel>
+    </Grid>
+</Window>
