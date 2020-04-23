@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfHello", "WpfHello\WpfHel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpenseIt", "ExpenseIt\ExpenseIt.csproj", "{FCD7D486-0994-482A-93B4-C4CC1FB62BF1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyMVVM", "EasyMVVM\EasyMVVM.csproj", "{2B96AF32-AD49-439D-A882-E13D30F26D05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EasyMVVM", "EasyMVVM\EasyMVVM.csproj", "{2B96AF32-AD49-439D-A882-E13D30F26D05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfExample", "WpfExample\WpfExample.csproj", "{28F64972-3C79-41FA-8A37-1FB7047DE313}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfExample", "WpfExample\WpfExample.csproj", "{28F64972-3C79-41FA-8A37-1FB7047DE313}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalMVVM", "MinimalMVVM\MinimalMVVM.csproj", "{A71E07A6-F620-46E1-8C30-D6AE9552136A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{28F64972-3C79-41FA-8A37-1FB7047DE313}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28F64972-3C79-41FA-8A37-1FB7047DE313}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28F64972-3C79-41FA-8A37-1FB7047DE313}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A71E07A6-F620-46E1-8C30-D6AE9552136A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A71E07A6-F620-46E1-8C30-D6AE9552136A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A71E07A6-F620-46E1-8C30-D6AE9552136A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A71E07A6-F620-46E1-8C30-D6AE9552136A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

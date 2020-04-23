@@ -1,0 +1,24 @@
+﻿<Window x:Class="MinimalMVVM.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:viewModel="clr-namespace:MinimalMVVM.ViewModel"
+        Title="MainWindow" Height="450" Width="300"
+        mc:Ignorable="d">
+    <Window.DataContext>
+        <viewModel:MainWindowViewModel/>
+    </Window.DataContext>
+    <Window.InputBindings>
+        <KeyBinding Key="Enter" Command="{Binding Presenter.ConvertTextCommand}"/>
+    </Window.InputBindings>
+    <StackPanel Height="400">
+        <Label Foreground="Blue" Margin="5,5,5,0">Text To Convert</Label>
+        <TextBox Text="{Binding Presenter.SomeText, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
+        <Label Foreground="Blue" Margin="5,5,5,0">History</Label>
+        <ListBox ItemsSource="{Binding Presenter.History}" Height="200" Margin="5"/>
+        <TextBlock Margin="5" Text="{Binding ConverterType}"/>
+        <Button Command="{Binding ChangeConverterCommand}" CommandParameter="{Binding}" Margin="5">Change Conversion</Button>
+        <Button Command="{Binding Presenter.ConvertTextCommand}" Margin="5">Convert</Button>
+    </StackPanel>
+</Window>
