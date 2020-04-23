@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using StudentInfoSystem.Models;
 using System.Linq;
-using System.Text;
 using UserLogin;
 
 namespace StudentInfoSystem

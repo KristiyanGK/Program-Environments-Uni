@@ -1,24 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using UserLogin;
 
-namespace StudentInfoSystem
+namespace StudentInfoSystem.Views
 {
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for LoginView.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class LoginView : Window
     {
-        public Login()
+        public LoginView()
         {
             InitializeComponent();
         }
@@ -50,17 +41,17 @@ namespace StudentInfoSystem
                 {
                     StudentValidation validation = new StudentValidation();
                     var student = validation.GetStudentByUser(user);
-                    StudentForm form = new StudentForm(student);
+                    MainForm form = new MainForm(student);
                     form.Show();
                     this.Close();
                 } else
                 {
-                    MessageBox.Show(roleGreeting(LoginValidation.CurrUserRole));
+                    MessageBox.Show(RoleGreeting(LoginValidation.CurrUserRole));
                 }
             }
         }
 
-        static string roleGreeting(UserRoles role)
+        static string RoleGreeting(UserRoles role)
         {
             string message = "Hello, {0}";
 

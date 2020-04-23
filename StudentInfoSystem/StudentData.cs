@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using StudentInfoSystem.Models;
+using System.Collections.Generic;
 
 namespace StudentInfoSystem
 {

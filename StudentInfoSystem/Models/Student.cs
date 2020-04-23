@@ -1,4 +1,4 @@
-﻿namespace StudentInfoSystem
+﻿namespace StudentInfoSystem.Models
 {
     public class Student
     {
