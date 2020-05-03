@@ -27,6 +27,7 @@
 
         <TextBlock x:Name="ErrorTxt" Visibility="Hidden" Grid.Row="2" Grid.Column="1"/>
 
+        <Button Grid.Row="3" Grid.Column="0" Click="Test_Click">Test Functionality</Button>
         <Button Grid.Row="3" Grid.Column="1" Click="Button_Click">Login</Button>
     </Grid>
 </Window>

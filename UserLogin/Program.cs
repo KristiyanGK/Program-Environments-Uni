@@ -117,14 +117,14 @@ namespace UserLogin
 
         static void changeUserRoleCommand()
         {
-            Console.Write("Username: ");
-            string username = Console.ReadLine();
+            Console.Write("UserId: ");
+            int userId = int.Parse(Console.ReadLine());
 
             Console.Write("Role: ");
             string userRoleString = Console.ReadLine();
 
             UserRoles role = Enum.Parse<UserRoles>(userRoleString.ToUpper());
-            UserData.AssignUserRole(username, role);
+            UserData.AssignUserRole(userId, role);
         }
 
         static void changeUserActiveTo()

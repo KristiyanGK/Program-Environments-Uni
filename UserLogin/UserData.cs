@@ -1,11 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UserLogin.Data;
 
 namespace UserLogin
 {
     public static class UserData
     {
+        static UserData()
+        {
+            using (UserLoginContext ctx = new UserLoginContext())
+            {
+                if (!ctx.Users.Any())
+                {
+                    ctx.Users.AddRange(TestUsers);
+
+                    ctx.SaveChanges();
+                }
+            }
+        }
+
         private static List<User> _testUsers;
 
         static bool reset = false;
@@ -22,34 +36,46 @@ namespace UserLogin
                 
                 return _testUsers;
             }
-            set { }
         }
 
         public static User IsUserPassCorrect(string username, string password)
         {
-            return TestUsers.FirstOrDefault(u => u.Password == password &&
-                u.Username == username);
+            using (UserLoginContext ctx = new UserLoginContext())
+            {
+                return ctx.Users.FirstOrDefault(u => u.Password == password &&
+                                                     u.Username == username);
+            }
         }
 
         public static void SetUserActiveTo(string username, DateTime activeTo)
         {
-            User user = TestUsers.FirstOrDefault(u => u.Username == username);
-
-            if (user != null)
+            using (UserLoginContext ctx = new UserLoginContext())
             {
-                Logger.LogActivity($"Changed activity to of {username} from {user.ActiveTo} to {activeTo}");
-                user.ActiveTo = activeTo;
+                User user = ctx.Users.FirstOrDefault(u => u.Username == username);
+
+                if (user != null)
+                {
+                    Logger.LogActivity($"Changed activity to of {username} from {user.ActiveTo} to {activeTo}");
+                    user.ActiveTo = activeTo;
+                    ctx.SaveChanges();
+                }
             }
         }
 
-        public static void AssignUserRole(string username, UserRoles role)
+        public static void AssignUserRole(int userId, UserRoles role)
         {
-            User user = TestUsers.FirstOrDefault(u => u.Username == username);
-
-            if (user != null)
+            using (UserLoginContext ctx = new UserLoginContext())
             {
-                Logger.LogActivity($"Changed role of {username} from {user.Role} to {role}");
+                User user = ctx.Users.FirstOrDefault(u => u.Id == userId);
+
+                if (user == null)
+                {
+                    return;
+                }
+
                 user.Role = role;
+
+                ctx.SaveChanges();
             }
         }
 

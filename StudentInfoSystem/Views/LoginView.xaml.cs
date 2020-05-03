@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Windows;
+using StudentInfoSystem.Data;
+using StudentInfoSystem.Models;
+using StudentInfoSystem.Services;
 using UserLogin;
 
 namespace StudentInfoSystem.Views
@@ -40,7 +43,7 @@ namespace StudentInfoSystem.Views
                 if (LoginValidation.CurrUserRole == UserRoles.STUDENT)
                 {
                     StudentValidation validation = new StudentValidation();
-                    var student = validation.GetStudentByUser(user);
+                    Student student = validation.GetStudentByUser(user);
                     MainForm form = new MainForm(student);
                     form.Show();
                     this.Close();
@@ -80,6 +83,18 @@ namespace StudentInfoSystem.Views
             }
 
             return message;
+        }
+
+        StudentService service = new StudentService();
+
+        private void Test_Click(object sender, RoutedEventArgs e)
+        {
+            if (service.TestStudentsIfEmpty())
+            {
+                service.CopyTestStudents();
+            }
+
+            MessageBox.Show(service.TestStudentsIfEmpty().ToString());
         }
     }
 }

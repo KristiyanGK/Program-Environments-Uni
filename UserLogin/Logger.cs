@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using UserLogin.Data;
+using UserLogin.Models;
 
 namespace UserLogin
 {
@@ -19,6 +21,12 @@ namespace UserLogin
                 + activity;
             currentSessionActivities.Add(activityLine);
 
+            using (UserLoginContext context = new UserLoginContext())
+            {
+                context.Logs.Add(new Logs { Activity = activityLine });
+
+                context.SaveChanges();
+            }
             File.AppendAllText(LOGPATH, activityLine + Environment.NewLine);
         }
 

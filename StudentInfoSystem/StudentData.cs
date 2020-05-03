@@ -9,7 +9,7 @@ namespace StudentInfoSystem
 
         static bool reset = false;
 
-        public static List<Student> TestUsers
+        public static List<Student> TestStudents
         {
             get
             {
@@ -21,7 +21,6 @@ namespace StudentInfoSystem
 
                 return _testStudents;
             }
-            set { }
         }
 
         private static void resetTestStudentData()
@@ -47,8 +46,8 @@ namespace StudentInfoSystem
             {
                 Degree = "Masters",
                 Faculty = "FKST",
-                FacultyNumber = "121217099",
-                FirstName = "Gosho",
+                FacultyNumber = "5785041212",
+                FirstName = "george",
                 MiddleName = "Gosho",
                 LastName = "Goshov",
                 Flow = 10,
