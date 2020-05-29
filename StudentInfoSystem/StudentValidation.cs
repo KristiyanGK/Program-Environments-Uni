@@ -7,12 +7,17 @@ namespace StudentInfoSystem
 {
     public class StudentValidation
     {
+        private readonly StudentInfoContext _context;
+
+        public StudentValidation(StudentInfoContext context)
+        {
+            _context = context;
+        }
+
         public Student GetStudentByUser(User user)
         {
-            using (StudentInfoContext context = new StudentInfoContext())
-            {
-                return context.Students.FirstOrDefault(s => s.FacultyNumber == user.FacultyNumber);
-            }
+            return _context.Students
+                .FirstOrDefault(s => s.FacultyNumber == user.FacultyNumber);
         }
     }
 }

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Windows;
-using StudentInfoSystem.Data;
-using StudentInfoSystem.Models;
+﻿using StudentInfoSystem.Models;
 using StudentInfoSystem.Services;
+using System;
+using System.Windows;
 using UserLogin;
 
 namespace StudentInfoSystem.Views
@@ -12,8 +11,13 @@ namespace StudentInfoSystem.Views
     /// </summary>
     public partial class LoginView : Window
     {
-        public LoginView()
+        private readonly StudentValidation _validation;
+        private readonly StudentService _studentService;
+
+        public LoginView(StudentValidation validation, StudentService studentService)
         {
+            _validation = validation;
+            _studentService = studentService;
             InitializeComponent();
         }
 
@@ -42,8 +46,7 @@ namespace StudentInfoSystem.Views
             {
                 if (LoginValidation.CurrUserRole == UserRoles.STUDENT)
                 {
-                    StudentValidation validation = new StudentValidation();
-                    Student student = validation.GetStudentByUser(user);
+                    Student student = _validation.GetStudentByUser(user);
                     MainForm form = new MainForm(student);
                     form.Show();
                     this.Close();
@@ -85,16 +88,14 @@ namespace StudentInfoSystem.Views
             return message;
         }
 
-        StudentService service = new StudentService();
-
         private void Test_Click(object sender, RoutedEventArgs e)
         {
-            if (service.TestStudentsIfEmpty())
+            if (_studentService.TestStudentsIfEmpty())
             {
-                service.CopyTestStudents();
+                _studentService.CopyTestStudents();
             }
 
-            MessageBox.Show(service.TestStudentsIfEmpty().ToString());
+            MessageBox.Show(_studentService.TestStudentsIfEmpty().ToString());
         }
     }
 }
