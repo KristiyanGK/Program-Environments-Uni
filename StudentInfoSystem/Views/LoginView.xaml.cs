@@ -52,41 +52,21 @@ namespace StudentInfoSystem.Views
                     this.Close();
                 } else
                 {
-                    MessageBox.Show(RoleGreeting(LoginValidation.CurrUserRole));
+                    string greetingTemplate = "Hello, {0}";
+                    MessageBox.Show(RoleGreeting(LoginValidation.CurrUserRole, greetingTemplate));
                 }
             }
         }
 
-        static string RoleGreeting(UserRoles role)
-        {
-            string message = "Hello, {0}";
-
-            switch (role)
-            {
-                case UserRoles.ADMIN:
-                    {
-                        message = string.Format(message, "Admin");
-                        break;
-                    }
-                case UserRoles.INSPECTOR:
-                    {
-                        message = string.Format(message, "Inspector");
-                        break;
-                    }
-                case UserRoles.PROFESSOR:
-                    {
-                        message = string.Format(message, "Professor");
-                        break;
-                    }
-                case UserRoles.STUDENT:
-                    {
-                        message = string.Format(message, "Student");
-                        break;
-                    }
-            }
-
-            return message;
-        }
+        public string RoleGreeting(UserRoles role, string message) =>
+            role switch
+                {
+                    UserRoles.ADMIN => string.Format(message, "Administrator"),
+                    UserRoles.INSPECTOR => string.Format(message, "Inspector"),
+                    UserRoles.PROFESSOR => string.Format(message, "Prof"),
+                    UserRoles.STUDENT => string.Format(message, "Student"),
+                    _  => throw new ArgumentException("Invalid Role!")
+                };
 
         private void Test_Click(object sender, RoutedEventArgs e)
         {

@@ -21,13 +21,13 @@ namespace UserLogin
                 + activity;
             currentSessionActivities.Add(activityLine);
 
-            using (UserLoginContext context = new UserLoginContext())
-            {
-                context.Logs.Add(new Logs { Activity = activityLine });
-
-                context.SaveChanges();
-            }
             File.AppendAllText(LOGPATH, activityLine + Environment.NewLine);
+
+            using UserLoginContext context = new UserLoginContext();
+
+            context.Logs.Add(new Logs { Activity = activityLine });
+
+            context.SaveChanges();
         }
 
         public static string GetCurrentSessionActivities()

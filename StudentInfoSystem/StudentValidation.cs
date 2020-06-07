@@ -14,10 +14,7 @@ namespace StudentInfoSystem
             _context = context;
         }
 
-        public Student GetStudentByUser(User user)
-        {
-            return _context.Students
-                .FirstOrDefault(s => s.FacultyNumber == user.FacultyNumber);
-        }
+        public Student GetStudentByUser(User user) => 
+            _context.Students.FirstOrDefault(s => s.FacultyNumber == user.FacultyNumber);
     }
 }
